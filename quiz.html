@@ -1,0 +1,144 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Development</title>
+<style>
+    body {
+        background: rgb(227, 184, 166);
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f1f1f1;
+    }
+    header {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 1em 0;
+    }
+    .quiz {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    h1,h2 {
+        text-align: center;
+    }
+    p {
+        line-height: 1.6;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <h1>Quiz</h1>
+    </header>
+    <div class="quiz">
+    <h1>CSS POSITIONING Quiz</h1>
+    <ol>
+        <li>
+            <strong>What is the default value of the position property in CSS?</strong><br>
+            <input type="radio" name="q1" value="a"> a) Relative<br>
+            <input type="radio" name="q1" value="b"> b) Absolute<br>
+            <input type="radio" name="q1" value="c"> c) Static<br>
+            <input type="radio" name="q1" value="d"> d) Fixed<br>
+        </li>
+        <br>
+        <li>
+            <strong>Which CSS positioning type allows an element to be positioned relative to its normal position?</strong><br>
+            <input type="radio" name="q2" value="a"> a) Relative<br>
+            <input type="radio" name="q2" value="b"> b) Absolute<br>
+            <input type="radio" name="q2" value="c"> c) Static<br>
+            <input type="radio" name="q2" value="d"> d) Fixed<br>
+        </li>
+        <br>
+        <li>
+            <strong>Which CSS positioning type removes an element from the normal document flow with no space created for the element in the page layout?</strong><br>
+            <input type="radio" name="q3" value="a"> a) Relative<br>
+            <input type="radio" name="q3" value="b"> b) Absolute<br>
+            <input type="radio" name="q3" value="c"> c) Static<br>
+            <input type="radio" name="q3" value="d"> d) Fixed<br>
+        </li>
+        <br>
+        <li>
+            <strong>Which CSS positioning type positions an element relative to the browser window?</strong><br>
+            <input type="radio" name="q4" value="a"> a) Relative<br>
+            <input type="radio" name="q4" value="b"> b) Absolute<br>
+            <input type="radio" name="q4" value="c"> c) Static<br>
+            <input type="radio" name="q4" value="d"> d) Fixed<br>
+        </li>
+        <br>
+        <li>
+            <strong>Which CSS positioning type is a hybrid of relative and fixed positioning?</strong><br>
+            <input type="radio" name="q5" value="a">a) Static<br>
+            <input type="radio" name="q5" value="b">b) Relative<br>
+            <input type="radio" name="q5" value="c">c) Absolute<br>
+            <input type="radio" name="q5" value="d">d) Sticky<br>
+        </li>
+        <br>
+        <li>
+            <strong>Which CSS property would you use to move a relatively positioned element 20px to the right of its normal position?</strong><br>
+            <input type="radio" name="q6" value="a">a) top<br>
+            <input type="radio" name="q6" value="b">b) bottom<br>
+            <input type="radio" name="q6" value="c">c) left<br>
+            <input type="radio" name="q6" value="d">d) right<br>
+        </li>
+        <br>
+        <li>
+            <strong>If two elements are absolutely positioned, which CSS property controls which one appears on top?</strong><br>
+            <input type="radio" name="q7" value="a">a) z-index<br>
+            <input type="radio" name="q7" value="b">b) align<br>
+            <input type="radio" name="q7" value="c">c) float<br>
+            <input type="radio" name="q7" value="d">d) clear<br>
+        </li>
+        <br>
+        <li>
+            <strong>Which positioning type is not affected by scrolling?</strong><br>
+            <input type="radio" name="q8" value="a" >a) static<br>
+            <input type="radio" name="q8" value="b" >b) relative<br>
+            <input type="radio" name="q8" value="c" >c) fixed<br>
+            <input type="radio" name="q8" value="d" >d) sticky<br>
+        </li>
+        <br>
+        <li>
+            <strong>Which of the following is not a valid value for the position property?</strong><br>
+            <input type="radio" name="q9" value="a" >a)  Inherit<br>
+            <input type="radio" name="q9" value="b" >b)  Initial<br>
+            <input type="radio" name="q9" value="c" >c)  Unset<br>
+            <input type="radio" name="q9" value="d" >d)  Center<br>
+        </li>
+        <br>
+        <li>
+            <strong>Which positioning type would you use to create a sticky header that remains at the top of the viewport when scrolling?</strong><br>
+            <input type="radio" name="q10" value="a" >a) static<br>
+            <input type="radio" name="q10" value="b" >b) relative<br>
+            <input type="radio" name="q10" value="c" >c) fixed<br>
+            <input type="radio" name="q10" value="d" >d) sticky<br>
+        </li>
+    </ol>
+    <button onclick="calculateScore()">Submit </button>
+    <h2>Your score: <span id="score">0</span> </h2>
+    <br>
+    
+</div>
+<script>
+    function calculateScore() {
+        let score = 0;
+        const answers = ['c', 'b', 'c', 'd', 'd','d','a','c','d','d']; // Correct answers
+        const inputs = document.querySelectorAll('input[type="radio"]:checked');
+        inputs.forEach((input, index) => {
+            if (input.value === answers[index]) {
+                score++;
+            }
+        });
+        document.getElementById('score').textContent = score;
+        // Create a new line with a link to answers.html
+        const newLine = document.createElement('p');
+        newLine.innerHTML = 'FOR ANSWERS CLICK <a href="answers.html">HERE</a>';
+        document.querySelector('.quiz').appendChild(newLine);
+    }
+</script>
+</body>
+</html>
+
